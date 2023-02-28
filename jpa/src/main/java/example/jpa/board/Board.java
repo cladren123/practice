@@ -1,6 +1,7 @@
 package example.jpa.board;
 
 
+import example.jpa.dto.BoardDto;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,6 @@ import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board {
 
     @Id
@@ -29,8 +29,22 @@ public class Board {
     @OneToMany(mappedBy = "board")
     private List<BoardReply> boardReplyList = new ArrayList<>();
 
+    public Board() {
+    }
 
+    public Board(Long id, String boardTitle, String boardContent, List<BoardReply> boardReplyList) {
+        this.id = id;
+        this.boardTitle = boardTitle;
+        this.boardContent = boardContent;
+        this.boardReplyList = boardReplyList;
+    }
 
+    // 입력DTO
+    public Board(BoardDto boardDto) {
+        this.id = boardDto.getId();
+        this.boardTitle = boardDto.getBoardTitle();
+        this.boardContent = boardDto.getBoardContent();
+    }
 
 
 

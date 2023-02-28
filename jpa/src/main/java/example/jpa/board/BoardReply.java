@@ -27,4 +27,10 @@ public class BoardReply {
 
 
 
+
+    public BoardReply(Long id, String boardReplyContent, Board board) {
+        this.id = id;
+        this.boardReplyContent = boardReplyContent;
+        this.board = board;
+    }
 }
