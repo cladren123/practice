@@ -1,13 +1,13 @@
 package example.jpa.controller;
 
-import example.jpa.board.Board;
 import example.jpa.dto.BoardDto;
 import example.jpa.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 
 @RestController
@@ -49,10 +49,24 @@ public class BoardController {
         }
     }
 
+    // 게시글 전체 조회
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAll() {
+        List<BoardDto> boardDtoList = boardService.getAll();
+
+        if (boardDtoList != null) {
+            return new ResponseEntity<List<BoardDto>>(boardDtoList, HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<String>("fail", HttpStatus.ACCEPTED);
+        }
+    }
+
+
 
     // 게시글 수정
-    @PutMapping("/delete/{boardId}")
-    public ResponseEntity<?> delete(@PathVariable BoardDto boardDto) {
+    @PutMapping("/update")
+    public ResponseEntity<?> update(@RequestBody BoardDto boardDto) {
 
         BoardDto boardUpdateDto = boardService.update(boardDto);
 
@@ -70,14 +84,4 @@ public class BoardController {
     public void deleteById(@PathVariable Long boardId) {
         boardService.deleteById(boardId);
     }
-
-
-
-
-
-
-
-
-
-
 }

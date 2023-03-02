@@ -1,5 +1,3 @@
-
-
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/jpaexample?serverTimezone=UTC&useUniCode=yes&characterEncoding=UTF-8
@@ -9,10 +7,8 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         # show_sql: true
         format_sql: true
-
-

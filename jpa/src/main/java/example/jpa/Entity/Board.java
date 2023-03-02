@@ -1,10 +1,8 @@
-package example.jpa.board;
+package example.jpa.Entity;
 
 
 import example.jpa.dto.BoardDto;
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public class Board {
     private String boardContent;
 
     // mappedBy 의 대상은 1:N에서 N의 클래스에 ManyToOne의 필드명 입니다.
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<BoardReply> boardReplyList = new ArrayList<>();
 
     public Board() {
@@ -39,12 +37,21 @@ public class Board {
         this.boardReplyList = boardReplyList;
     }
 
-    // 입력DTO
+    // DTO으로 생성하기
     public Board(BoardDto boardDto) {
         this.id = boardDto.getId();
         this.boardTitle = boardDto.getBoardTitle();
         this.boardContent = boardDto.getBoardContent();
     }
+
+    // DTO로 수정하기
+    public void modifyBoard(BoardDto boardDto) {
+        this.id = boardDto.getId();
+        this.boardTitle = boardDto.getBoardTitle();
+        this.boardContent = boardDto.getBoardContent();
+    }
+
+
 
 
 

@@ -1,6 +1,7 @@
-package example.jpa.board;
+package example.jpa.Entity;
 
 
+import example.jpa.dto.BoardReplyDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,8 +26,15 @@ public class BoardReply {
     @JoinColumn(name = "board_id")
     private Board board;
 
+    public BoardReply() {
+    }
 
-
+    // 댓글 등록을 위한 생성자 생성
+    public BoardReply(BoardReplyDto boardReplyDto, Board board) {
+        this.id = boardReplyDto.getId();
+        this.boardReplyContent = boardReplyDto.getBoardReplyContent();
+        this.board = board;
+    }
 
     public BoardReply(Long id, String boardReplyContent, Board board) {
         this.id = id;
