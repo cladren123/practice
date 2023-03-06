@@ -1,6 +1,7 @@
 package example.jpa.controller;
 
 import example.jpa.dto.BoardDto;
+import example.jpa.dto.BoardReplyDto;
 import example.jpa.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,12 +25,11 @@ public class BoardController {
     public ResponseEntity<?> insert(@RequestBody BoardDto boardDto) {
 
         System.out.println("board insret 작동");
-        
+
         BoardDto boardReadDto = boardService.insert(boardDto);
         if (boardReadDto != null) {
             return new ResponseEntity<BoardDto>(boardReadDto, HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity<String>("fail", HttpStatus.ACCEPTED);
         }
 
@@ -43,8 +43,7 @@ public class BoardController {
 
         if (boardDto != null) {
             return new ResponseEntity<BoardDto>(boardDto, HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity<String>("fail", HttpStatus.ACCEPTED);
         }
     }
@@ -56,12 +55,10 @@ public class BoardController {
 
         if (boardDtoList != null) {
             return new ResponseEntity<List<BoardDto>>(boardDtoList, HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity<String>("fail", HttpStatus.ACCEPTED);
         }
     }
-
 
 
     // 게시글 수정
@@ -72,8 +69,7 @@ public class BoardController {
 
         if (boardUpdateDto != null) {
             return new ResponseEntity<BoardDto>(boardUpdateDto, HttpStatus.OK);
-        }
-        else {
+        } else {
             return new ResponseEntity<String>("fail", HttpStatus.ACCEPTED);
         }
     }
@@ -84,4 +80,36 @@ public class BoardController {
     public void deleteById(@PathVariable Long boardId) {
         boardService.deleteById(boardId);
     }
+
+
+    // 게시글 댓글 삽입
+    @PostMapping("/reply/insert")
+    public ResponseEntity<?> replyInsert(@RequestBody BoardReplyDto boardReplyDto) {
+        BoardReplyDto boardReplySaveDto = boardService.replyInsert(boardReplyDto);
+
+        if (boardReplySaveDto != null) {
+            return new ResponseEntity<BoardReplyDto>(boardReplySaveDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("fail", HttpStatus.ACCEPTED);
+        }
+    }
+
+    // 게시글 댓글 편집
+    @PutMapping("/reply/update")
+    public ResponseEntity<?> replyUpdate(@RequestBody BoardReplyDto boardReplyDto) {
+        BoardReplyDto boardReplyUpdateDto = boardService.replyUpdate(boardReplyDto);
+
+        if (boardReplyUpdateDto != null) {
+            return new ResponseEntity<BoardReplyDto>(boardReplyUpdateDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("fail", HttpStatus.ACCEPTED);
+        }
+    }
+
+    // 게시글 댓글 삭제
+    @DeleteMapping("/reply/deleteById/{boardReplyId}")
+    public void replyDeleteById(@PathVariable Long boardReplyId) {
+        boardService.deleteById(boardReplyId);
+    }
+
 }

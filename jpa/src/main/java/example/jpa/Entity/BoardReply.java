@@ -1,6 +1,5 @@
 package example.jpa.Entity;
 
-
 import example.jpa.dto.BoardReplyDto;
 import lombok.*;
 
@@ -8,7 +7,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class BoardReply {
 
     @Id
@@ -40,5 +38,11 @@ public class BoardReply {
         this.id = id;
         this.boardReplyContent = boardReplyContent;
         this.board = board;
+    }
+
+    // 댓글 변경을 위한 메소드
+    public void modify(BoardReplyDto boardReplyDto) {
+        this.id = boardReplyDto.getId();
+        this.boardReplyContent = boardReplyDto.getBoardReplyContent();
     }
 }

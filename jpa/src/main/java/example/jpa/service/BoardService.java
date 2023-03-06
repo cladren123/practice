@@ -1,6 +1,5 @@
 package example.jpa.service;
 
-
 import example.jpa.Entity.Board;
 import example.jpa.Entity.BoardReply;
 import example.jpa.dto.BoardDto;
@@ -65,18 +64,24 @@ public class BoardService {
 
 
     // 게시글 댓글 작성
-    public BoardReply replyInsert(BoardReplyDto boardReplyDto) {
+    public BoardReplyDto replyInsert(BoardReplyDto boardReplyDto) {
         Board board = boardRepository.getById(boardReplyDto.getBoardId());
         BoardReply boardReply = new BoardReply(boardReplyDto, board);
         BoardReply save = boardReplyRepository.save(boardReply);
+        BoardReplyDto saveDto = new BoardReplyDto(save);
 
-        return save;
+        return saveDto;
     }
 
     // 게시글 댓글 변경하기
-    public BoardReply replyUpdate(BoardReplyDto boardReplyDto) {
-
+    public BoardReplyDto replyUpdate(BoardReplyDto boardReplyDto) {
+        BoardReply boardReply = boardReplyRepository.getById(boardReplyDto.getId());
+        boardReply.modify(boardReplyDto);
+        return new BoardReplyDto(boardReply);
     }
 
-
+    // 게시글 댓글 삭제
+    public void replyDeleteById(Long boardReplyId) {
+        boardReplyRepository.deleteById(boardReplyId);
+    }
 }

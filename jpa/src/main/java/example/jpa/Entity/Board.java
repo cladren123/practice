@@ -50,9 +50,4 @@ public class Board {
         this.boardTitle = boardDto.getBoardTitle();
         this.boardContent = boardDto.getBoardContent();
     }
-
-
-
-
-
 }
