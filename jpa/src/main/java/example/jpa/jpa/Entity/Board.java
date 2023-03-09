@@ -1,7 +1,7 @@
-package example.jpa.Entity;
+package example.jpa.jpa.Entity;
 
 
-import example.jpa.dto.BoardDto;
+import example.jpa.jpa.dto.BoardDto;
 import lombok.Data;
 
 import javax.persistence.*;

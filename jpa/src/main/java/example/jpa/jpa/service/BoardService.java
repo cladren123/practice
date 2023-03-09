@@ -1,11 +1,11 @@
-package example.jpa.service;
+package example.jpa.jpa.service;
 
-import example.jpa.Entity.Board;
-import example.jpa.Entity.BoardReply;
-import example.jpa.dto.BoardDto;
-import example.jpa.dto.BoardReplyDto;
-import example.jpa.repository.BoardReplyRepository;
-import example.jpa.repository.BoardRepository;
+import example.jpa.jpa.Entity.Board;
+import example.jpa.jpa.Entity.BoardReply;
+import example.jpa.jpa.dto.BoardDto;
+import example.jpa.jpa.dto.BoardReplyDto;
+import example.jpa.jpa.repository.BoardReplyRepository;
+import example.jpa.jpa.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

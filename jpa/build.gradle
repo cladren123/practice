@@ -17,10 +17,17 @@ dependencies {
 
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
-
+	// JPA 설정
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	// Kafka 설정
+//	implementation 'org.springframework.kafka:spring-kafka'
+
+	// Kakao 소셜 로그인
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 
 
 	compileOnly 'org.projectlombok:lombok'

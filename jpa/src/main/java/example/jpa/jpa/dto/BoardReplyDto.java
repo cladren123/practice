@@ -1,6 +1,6 @@
-package example.jpa.dto;
+package example.jpa.jpa.dto;
 
-import example.jpa.Entity.BoardReply;
+import example.jpa.jpa.Entity.BoardReply;
 import lombok.Data;
 
 @Data

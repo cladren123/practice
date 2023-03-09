@@ -1,10 +1,12 @@
 spring:
+  # data 연결 부분 설정
   datasource:
     url: jdbc:mysql://localhost:3306/jpaexample?serverTimezone=UTC&useUniCode=yes&characterEncoding=UTF-8
     username: root
     password: ssafy
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+  # JPA 설정
   jpa:
     hibernate:
       ddl-auto: update
@@ -12,3 +14,39 @@ spring:
       hibernate:
         # show_sql: true
         format_sql: true
+
+  # kafka 설정
+#  kafka:
+#    consumer:
+#      bootstrap-servers: localhost:9092
+#      group-id: foo
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#    producer:
+#      bootstrap-servers: localhost:9092
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+  # kakao 소셜 로그인 (security, oauth)
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: "e34bbe4ced5bf895fa78dbd38b0964bb"
+            redirect-uri: "http://localhost:8080/login/oauth2/code/{registrationId}"
+            client-authentication-method: POST
+            authorization-grant-type: authorization_code
+            scope: profile_nickname, account_email #동의 항목
+            client-name: Kakao
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
+
+
+
+

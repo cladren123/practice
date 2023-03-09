@@ -1,8 +1,8 @@
-package example.jpa.dto;
+package example.jpa.jpa.dto;
 
 
-import example.jpa.Entity.Board;
-import example.jpa.Entity.BoardReply;
+import example.jpa.jpa.Entity.Board;
+import example.jpa.jpa.Entity.BoardReply;
 import lombok.Data;
 
 import java.util.ArrayList;

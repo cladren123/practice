@@ -1,8 +1,8 @@
-package example.jpa.controller;
+package example.jpa.jpa.controller;
 
-import example.jpa.dto.BoardDto;
-import example.jpa.dto.BoardReplyDto;
-import example.jpa.service.BoardService;
+import example.jpa.jpa.dto.BoardDto;
+import example.jpa.jpa.dto.BoardReplyDto;
+import example.jpa.jpa.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
